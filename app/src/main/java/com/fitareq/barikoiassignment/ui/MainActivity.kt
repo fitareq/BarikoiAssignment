@@ -5,6 +5,7 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import com.fitareq.barikoiassignment.BaseActivity
 import com.fitareq.barikoiassignment.data.model.Places
+import com.fitareq.barikoiassignment.data.repository.MainRepository.Companion.apiKey
 import com.fitareq.barikoiassignment.databinding.ActivityMainBinding
 import com.mapbox.mapboxsdk.Mapbox
 import com.mapbox.mapboxsdk.annotations.MarkerOptions
@@ -47,7 +48,7 @@ class MainActivity : BaseActivity() {
         }
         binding.mapView.getMapAsync { mapboxMap ->
             map = mapboxMap
-            map.setStyle("https://map.barikoi.com/styles/barikoi-bangla/style.json?key=bkoi_fc997801e71cdd71f51a0d5175702ea8a9653fd8e9df5fa0b0c954f81259f927")
+            map.setStyle("https://map.barikoi.com/styles/barikoi-bangla/style.json?key=$apiKey")
             map.cameraPosition =
                 CameraPosition.Builder().target(LatLng(23.773184, 90.4003584)).zoom(15.0).build()
             viewModel.getNearbyBanks(90.4003584, 23.773184)
